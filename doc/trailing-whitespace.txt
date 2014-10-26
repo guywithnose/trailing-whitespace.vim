@@ -1,0 +1,6 @@
+Trailing Whitespace			*trailing-whitespace.txt*
+==============================================================
+This plugin will alert you when you save a file with trailing whitespace.
+
+					*_$*
+You can also remove all trailing whitespace with `_$`.
