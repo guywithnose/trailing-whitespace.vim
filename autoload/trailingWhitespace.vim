@@ -3,6 +3,9 @@
 " Detect whitespace at the end of lines
 " If whitespace is found it is highlighted and a warning is shown
 function! trailingWhitespace#check()
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
   let searchCount = 0
   normal G$
   let flags = "w"
@@ -20,15 +23,15 @@ function! trailingWhitespace#check()
     " isn't distracting while editing
     match TrailingWhitespace /$^/
   endif
+  let @/=_s
+  call cursor(l, c)
 endfunction
 
-" Run a command without moving the cursor or changing the current search
-" pattern
-function! trailingWhitespace#preserve(command)
+function! trailingWhitespace#strip()
   let _s=@/
   let l = line(".")
   let c = col(".")
-  execute a:command
+  %s/\s\+$//e
   let @/=_s
   call cursor(l, c)
 endfunction
